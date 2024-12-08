@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jira
+  namespace: atlassian
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jira
+  template:
+    metadata:
+      labels:
+        app: jira
+    spec:
+      containers:
+      - name: jira
+        image: reg.rahyab.ir/docker-local/jiracracked
+        ports:
+        - containerPort: 8080
+        env:
+        - name: ATL_DB_TYPE
+          value: postgres72
+        - name: ATL_JDBC_URL
+          value: jdbc:postgresql://jira-postgresql:5432/jiradb
+        - name: ATL_JDBC_USER
+          value: jirauser
+        - name: ATL_JDBC_PASSWORD
+          value: As@97531
+        volumeMounts:
+        - mountPath: "/var/atlassian/application-data/jira"
+          name: jira-home
+        - mountPath: /opt/atlassian/jira/conf/server.xml
+          subPath: server.xml
+          name: jira-config
+      volumes:
+      - name: jira-home
+        persistentVolumeClaim:
+          claimName: jira-home
+      - name: jira-config
+        configMap:
+          name: jira-server-xml
