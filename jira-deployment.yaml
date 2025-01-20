@@ -13,9 +13,11 @@ spec:
       labels:
         app: jira
     spec:
+      imagePullSecrets:
+      - name: regcred
       containers:
       - name: jira
-        image: reg.rahyab.ir/docker-local/jiracracked
+        image: repository.rahyab.ir/jiracracked:latest
         ports:
         - containerPort: 8080
         env:
@@ -27,12 +29,22 @@ spec:
           value: jirauser
         - name: ATL_JDBC_PASSWORD
           value: As@97531
+        - name: HTTP_PROXY
+          value: "http://172.17.11.2:443"
+        - name: HTTPS_PROXY
+          value: "http://172.17.11.2:443"
+        - name: NO_PROXY
+          value: "localhost,127.0.0.1,.local,.svc"
+        - name: JVM_SUPPORT_RECOMMENDED_ARGS
         volumeMounts:
         - mountPath: "/var/atlassian/application-data/jira"
           name: jira-home
         - mountPath: /opt/atlassian/jira/conf/server.xml
           subPath: server.xml
           name: jira-config
+        - mountPath: /opt/atlassian/jira/bin/setenv.sh
+          subPath: setenv.sh
+          name: jira-setenv
       volumes:
       - name: jira-home
         persistentVolumeClaim:
@@ -40,3 +52,7 @@ spec:
       - name: jira-config
         configMap:
           name: jira-server-xml
+      - name: jira-setenv
+        configMap:
+          name: jira-setenv
+
