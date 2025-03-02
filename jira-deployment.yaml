@@ -36,6 +36,13 @@ spec:
         - name: NO_PROXY
           value: "localhost,127.0.0.1,.local,.svc"
         - name: JVM_SUPPORT_RECOMMENDED_ARGS
+        resources:
+          requests:
+            memory: "8Gi"
+            cpu: "2"
+          limits:
+            memory: "10Gi"
+            cpu: "4"
         volumeMounts:
         - mountPath: "/var/atlassian/application-data/jira"
           name: jira-home
