@@ -7,4 +7,5 @@ helm install jira-postgresql bitnami/postgresql --namespace jira \
   --set postgresqlPassword=your_password \
   --set postgresqlDatabase=jiradb \
   --set postgresqlUsername=jirauser
+  
 Then deploy Jira application and connect it to database.
