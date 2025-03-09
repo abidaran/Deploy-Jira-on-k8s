@@ -17,7 +17,7 @@ spec:
       - name: regcred
       containers:
       - name: jira
-        image: repository.rahyab.ir/jiracracked:latest
+        image: atlassian/jira-software
         ports:
         - containerPort: 8080
         env:
