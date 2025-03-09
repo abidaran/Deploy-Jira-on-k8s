@@ -1,4 +1,5 @@
-First Set Up a Database: Use a Helm chart to deploy PostgreSQL
+First Set Up a Database: Use a Helm chart to deploy PostgreSQL:
+
 helm repo add bitnami https://charts.bitnami.com/bitnami
 helm install jira-postgresql bitnami/postgresql --namespace jira \
   --set global.storageClass=standard \
