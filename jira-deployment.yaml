@@ -24,17 +24,11 @@ spec:
         - name: ATL_DB_TYPE
           value: postgres72
         - name: ATL_JDBC_URL
-          value: jdbc:postgresql://jira-postgresql:5432/jiradb
+          value: jdbc:postgresql://jira-postgresql/jiradb
         - name: ATL_JDBC_USER
           value: jirauser
         - name: ATL_JDBC_PASSWORD
-          value: As@97531
-        - name: HTTP_PROXY
-          value: "http://172.17.11.2:443"
-        - name: HTTPS_PROXY
-          value: "http://172.17.11.2:443"
-        - name: NO_PROXY
-          value: "localhost,127.0.0.1,.local,.svc"
+          value: DBPassword
         - name: JVM_SUPPORT_RECOMMENDED_ARGS
         resources:
           requests:
