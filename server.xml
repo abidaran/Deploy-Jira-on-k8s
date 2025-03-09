@@ -22,7 +22,7 @@
                acceptCount="10"
                secure="false"
                scheme="https"
-               proxyName="jira.rahyab.ir"
+               proxyName="My.Domain.Name"
                proxyPort="443"
 
                relaxedPathChars="[]|"
