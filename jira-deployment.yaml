@@ -43,9 +43,6 @@ spec:
         - mountPath: /opt/atlassian/jira/conf/server.xml
           subPath: server.xml
           name: jira-config
-        - mountPath: /opt/atlassian/jira/bin/setenv.sh
-          subPath: setenv.sh
-          name: jira-setenv
       volumes:
       - name: jira-home
         persistentVolumeClaim:
@@ -53,7 +50,4 @@ spec:
       - name: jira-config
         configMap:
           name: jira-server-xml
-      - name: jira-setenv
-        configMap:
-          name: jira-setenv
 
